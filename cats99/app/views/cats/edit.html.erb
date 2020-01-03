@@ -1,0 +1,44 @@
+<h1>Edit your kitty</h1>
+
+<ul>
+<% @kitty.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+</ul>
+
+<form action="<%= cats_url %>" method="POST">
+<input type="hidden" name="_method" value="PUT">
+
+<label for="cat-name">Name</label>
+<input id="cat-name" type="text" name="cats[name]">
+
+<br>
+
+<label for="cat-birth_date">Birth Date</label>
+<input id="cat-birth_date" type="date" name="cats[birth_date]">
+
+<br>
+
+<label for="cat-color">Color</label>
+<select id="cat-color" name="cats[color]">
+  <option disabled selected>--Please Pick Color--</option>
+  <% Cat::COLORS.each do |color| %>
+    <option value="<%=color%>"><%=color.capitalize%></option>
+  <% end %>
+
+</select>
+
+<br>
+
+<label for="cat-sex">Sex</label>
+<input id="cat-sex" type="radio" name="cats[sex]" value="male">Male
+<input id="cat-sex" type="radio" name="cats[sex]" value="female">Female
+
+<br>
+
+<label for="cat-description">Description</label>
+<textarea id="cat-description" name="cats[description]"></textarea>
+
+<br>
+
+<input type="submit" value="SUBMIT">

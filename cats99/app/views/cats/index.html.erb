@@ -1,0 +1,8 @@
+<h1>This is all the cats</h1>
+
+<ul>
+<% @kittys.each do |kitty| %>
+  <li> Name = <%= kitty.name %> </li>
+  <a href = "<%= cat_url(kitty.id) %>" method = "GET">Go see kitty</a>
+<% end %>
+</ul>
